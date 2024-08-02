@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6vyfg3hxcxei"]
+
+[ext_resource type="Texture2D" uid="uid://bkaklfsnldfst" path="res://Textures/post_example1.webp" id="1_quk44"]
+[ext_resource type="Shader" path="res://Hex.gdshader" id="2_a7t21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xn62f"]
+shader = ExtResource("2_a7t21")
+shader_parameter/size = Vector2(32, 28)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PostExample1" type="Sprite2D" parent="."]
+position = Vector2(563, 322)
+scale = Vector2(1.15739, 1.15739)
+texture = ExtResource("1_quk44")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_xn62f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
