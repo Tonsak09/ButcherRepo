@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6vyfg3hxcxei"]
+[gd_scene load_steps=17 format=3 uid="uid://b6vyfg3hxcxei"]
 
 [ext_resource type="Texture2D" uid="uid://bkaklfsnldfst" path="res://Textures/post_example1.webp" id="1_quk44"]
 [ext_resource type="Shader" path="res://Hex.gdshader" id="2_a7t21"]
 [ext_resource type="Texture2D" uid="uid://bi1m5slxlo252" path="res://Textures/ASCII_Gradient_with_BG.png" id="3_o5lid"]
+[ext_resource type="Script" path="res://Scripts/FreeCamController.gd" id="4_84seh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn62f"]
 shader = ExtResource("2_a7t21")
@@ -11,16 +12,68 @@ shader_parameter/colorA = Vector3(198, 60, 81)
 shader_parameter/colorB = Vector3(64, 83, 76)
 shader_parameter/ASCII_texture = ExtResource("3_o5lid")
 
+[sub_resource type="Environment" id="Environment_wdbnd"]
+glow_intensity = 1.28
+glow_bloom = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_vk4ur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vn06"]
+albedo_color = Color(1, 0.572549, 0.341176, 1)
+
 [sub_resource type="TorusMesh" id="TorusMesh_wy3dk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkfyn"]
+albedo_color = Color(0, 0.737255, 0.741176, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_h62st"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy184"]
+albedo_color = Color(0.447059, 0.592157, 0.470588, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_ea0nw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b315"]
+resource_name = "Material"
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+metallic = 0.4
+roughness = 0.272166
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gbmr1"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02001, 0.02001, 0.02001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 3, 0, 0, 0, 4, 0, 2, 0, 4, 0, 5, 0, 3, 0, 4, 0, 2, 0, 2, 0, 5, 0, 1, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(222, 255, 222, 255, 222, 255, 0, 0, 0, 0, 222, 255, 222, 255, 0, 0, 0, 0, 222, 255, 0, 0, 0, 0, 222, 255, 222, 255, 0, 0, 0, 0, 222, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n5hvq"]
+resource_name = "Root Scene_Cube"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02001, 0.02001, 0.02001),
+"attribute_data": PackedByteArray(255, 159, 255, 127, 255, 159, 255, 191, 255, 95, 255, 191, 255, 95, 255, 127, 255, 95, 255, 127, 255, 95, 255, 63, 255, 159, 255, 127, 255, 31, 255, 127, 255, 31, 255, 63, 255, 95, 255, 63, 255, 95, 255, 127, 255, 95, 255, 191, 255, 159, 255, 191, 255, 31, 255, 63),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 7, 0, 9, 0, 8, 0, 10, 0, 9, 0, 7, 0, 11, 0, 13, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_0b315"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray(222, 255, 222, 255, 222, 255, 170, 42, 0, 0, 222, 255, 222, 255, 170, 42, 0, 0, 222, 255, 0, 0, 170, 42, 222, 255, 222, 255, 0, 0, 170, 42, 222, 255, 222, 255, 0, 0, 255, 63, 222, 255, 0, 0, 0, 0, 255, 63, 222, 255, 222, 255, 222, 255, 255, 63, 0, 0, 222, 255, 0, 0, 254, 127, 0, 0, 0, 0, 0, 0, 254, 127, 222, 255, 0, 0, 0, 0, 254, 127, 222, 255, 222, 255, 0, 0, 254, 127, 0, 0, 222, 255, 0, 0, 255, 255, 0, 0, 222, 255, 222, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gbmr1")
 
 [node name="Node3D" type="Node3D"]
 
 [node name="PostExample1" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(563, 322)
 scale = Vector2(1.15739, 1.15739)
 texture = ExtResource("1_quk44")
@@ -37,25 +90,43 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wdbnd")
+camera_attributes = SubResource("CameraAttributesPractical_vk4ur")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.885126, 0.465352, 0, -0.465352, 0.885126, -1.19209e-07, 1.75266, 2.78746)
+transform = Transform3D(1, 0, 0, 0, 0.968274, 0.24989, 0, -0.24989, 0.968274, -1.19209e-07, 1.93853, 3.58483)
+script = ExtResource("4_84seh")
+speed = 10.0
+speedH = 0.1
+speedV = 0.1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.0581824, 0.187645, 0.980512, 0.997423, 0.0303643, -0.0649968, -0.0419689, 0.981767, -0.185395, 0, 0, 0)
+transform = Transform3D(0.0581824, 0.187645, 0.980512, 0.997423, 0.0303643, -0.0649969, -0.0419689, 0.981767, -0.185395, 0, 0, 0)
+visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.941447, -0.0561309, -0.332455, -0.0344241, 0.964889, -0.260392, 0.335398, 0.25659, 0.90646, 0, 0, 0)
+transform = Transform3D(-0.237532, 0.507813, 0.828073, 0.968027, 0.0529774, 0.245189, 0.0806413, 0.859837, -0.50416, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932229, 0)
+material_override = SubResource("StandardMaterial3D_1vn06")
 mesh = SubResource("TorusMesh_wy3dk")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12201, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12201, 0.932229, 0)
+material_override = SubResource("StandardMaterial3D_hkfyn")
 mesh = SubResource("SphereMesh_h62st")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.673851, -0.25406, 0.693815, 0.620032, 0.705151, -0.34398, -0.401852, 0.661979, 0.632692, -2.37799, 0, 0)
+transform = Transform3D(0.673851, -0.25406, 0.693815, 0.620032, 0.705151, -0.34398, -0.401852, 0.661979, 0.632692, -2.37799, 0.932229, 0)
+material_override = SubResource("StandardMaterial3D_yy184")
 mesh = SubResource("PrismMesh_ea0nw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29029, 1.34595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42311, 1.29029, 0.780599)
+
+[node name="Backdrop" type="MeshInstance3D" parent="."]
+transform = Transform3D(398.183, 0, 0, 0, -2.46533e-05, 251.446, 0, -206.807, -2.99748e-05, 0, 3, 0.511781)
+mesh = SubResource("ArrayMesh_n5hvq")
+skeleton = NodePath("")
