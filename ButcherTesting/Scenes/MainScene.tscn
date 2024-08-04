@@ -1,19 +1,23 @@
-[gd_scene load_steps=41 format=3 uid="uid://b6vyfg3hxcxei"]
+[gd_scene load_steps=50 format=3 uid="uid://b6vyfg3hxcxei"]
 
-[ext_resource type="Texture2D" uid="uid://bkaklfsnldfst" path="res://Textures/post_example1.webp" id="1_quk44"]
-[ext_resource type="Shader" path="res://Hex.gdshader" id="2_a7t21"]
-[ext_resource type="Texture2D" uid="uid://bi1m5slxlo252" path="res://Textures/ASCII_Gradient_with_BG.png" id="3_o5lid"]
-[ext_resource type="Script" path="res://Scripts/FreeCamController.gd" id="4_84seh"]
-[ext_resource type="Script" path="res://Scripts/RoomMove.gd" id="5_awpbr"]
-[ext_resource type="Script" path="res://Scripts/Character.gd" id="6_876ea"]
-[ext_resource type="PackedScene" uid="uid://ckguiq0tsyxct" path="res://Models/character.fbx" id="7_oiro4"]
+[ext_resource type="Shader" path="res://Shaders/Hex.gdshader" id="1_uifda"]
+[ext_resource type="Texture2D" uid="uid://bi1m5slxlo252" path="res://Textures/ASCII_Gradient_with_BG.png" id="2_ryc4w"]
+[ext_resource type="Texture2D" uid="uid://bkaklfsnldfst" path="res://Textures/post_example1.webp" id="3_43ji6"]
+[ext_resource type="Script" path="res://Scripts/Follower.gd" id="4_b2vma"]
+[ext_resource type="Script" path="res://Scripts/FreeCamController.gd" id="5_acpvy"]
+[ext_resource type="Script" path="res://Scripts/RoomMove.gd" id="6_0oyf6"]
+[ext_resource type="Script" path="res://Scripts/Character.gd" id="7_tn18a"]
+[ext_resource type="PackedScene" uid="uid://ckguiq0tsyxct" path="res://Models/character.fbx" id="8_5btgj"]
+[ext_resource type="Shader" uid="uid://cgccd20k6t5l6" path="res://Materials/Trunchet.res" id="9_jsqj4"]
+[ext_resource type="Texture2D" uid="uid://osgw2j6xwlky" path="res://Textures/Trunchet.png" id="10_a2nua"]
+[ext_resource type="Texture2D" uid="uid://dylc4gotx6nft" path="res://Textures/icon.svg" id="10_k70ke"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn62f"]
-shader = ExtResource("2_a7t21")
+shader = ExtResource("1_uifda")
 shader_parameter/size = Vector2(32, 28)
 shader_parameter/colorA = Vector3(198, 60, 81)
 shader_parameter/colorB = Vector3(64, 83, 76)
-shader_parameter/ASCII_texture = ExtResource("3_o5lid")
+shader_parameter/ASCII_texture = ExtResource("2_ryc4w")
 
 [sub_resource type="Environment" id="Environment_wdbnd"]
 ambient_light_source = 1
@@ -321,9 +325,59 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6i7ud")
 
+[sub_resource type="Curve" id="Curve_qgl6y"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_871qy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3i7ii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p4v3p"]
+render_priority = 0
+shader = ExtResource("9_jsqj4")
+shader_parameter/CellCount = 4.0
+shader_parameter/TileCount = 4.0
+shader_parameter/Texture2DParameter = ExtResource("10_k70ke")
+shader_parameter/Texture2DParameter2 = ExtResource("10_a2nua")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7rr7"]
+resource_name = "DefaultMaterial"
+albedo_color = Color(0.735357, 0.735357, 0.735357, 1)
+metallic = 0.2
+roughness = 0.8
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jkjws"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02001, 0.02001, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"name": "DefaultMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(222, 255, 222, 255, 0, 0, 0, 0, 0, 0, 222, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 222, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8igmp"]
+resource_name = "Root Scene_Plane"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02001, 0.02001, 1e-05),
+"attribute_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_h7rr7"),
+"name": "DefaultMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(222, 255, 222, 255, 0, 0, 255, 127, 0, 0, 222, 255, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 222, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jkjws")
 
 [node name="Node3D" type="Node3D"]
 
@@ -342,7 +396,7 @@ size_flags_vertical = 3
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 position = Vector2(161, 76)
-texture = ExtResource("1_quk44")
+texture = ExtResource("3_43ji6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wdbnd")
@@ -377,7 +431,7 @@ material_override = SubResource("StandardMaterial3D_yy184")
 mesh = SubResource("PrismMesh_ea0nw")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(500, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, 2.465, 2, 31.0813)
+transform = Transform3D(500, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, 2.465, 2, 30.9908)
 material_override = SubResource("StandardMaterial3D_6jerf")
 mesh = SubResource("ArrayMesh_yvcnh")
 skeleton = NodePath("")
@@ -446,30 +500,39 @@ light_color = Color(0.337255, 1, 0.34902, 1)
 
 [node name="PlayerFolder" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="PlayerFolder"]
-transform = Transform3D(-4.37114e-08, 0.461749, -0.887011, 0, 0.887011, 0.461749, 1, 2.01837e-08, -3.87725e-08, -6.34626, 8.20975, 30.5848)
-script = ExtResource("4_84seh")
+[node name="Follower" type="Node3D" parent="PlayerFolder" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 1.77636e-15, 0, 1, 1.77636e-15, 1.77636e-15, 0, 1, -2.431, 6.115, 31)
+script = ExtResource("4_b2vma")
+mode = 2
+target = NodePath("../CharacterBody3D")
+followSpeed = 10.0
+fallOffMax = 5.0
+falloffCurve = SubResource("Curve_qgl6y")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerFolder/Follower"]
+transform = Transform3D(-4.37114e-08, 0.834848, -0.550481, -1.77636e-15, 0.550481, 0.834848, 1, 3.64924e-08, -2.40623e-08, 0, 0, 0)
+script = ExtResource("5_acpvy")
 speed = 10.0
 speedH = 0.1
 speedV = 0.1
 
-[node name="RayCast3D" type="RayCast3D" parent="PlayerFolder/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="PlayerFolder/Follower/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.47035e-08, -1, 0, 1, -4.47035e-08, 0, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
-script = ExtResource("5_awpbr")
+script = ExtResource("6_0oyf6")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerFolder" node_paths=PackedStringArray("cam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 31)
-script = ExtResource("6_876ea")
-cam = NodePath("../Camera3D")
-moveSpeed = 2.0
+script = ExtResource("7_tn18a")
+cam = NodePath("../Follower/Camera3D")
+moveSpeed = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerFolder/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_871qy")
 
-[node name="Root Scene" parent="PlayerFolder/CharacterBody3D" instance=ExtResource("7_oiro4")]
+[node name="Root Scene" parent="PlayerFolder/CharacterBody3D" instance=ExtResource("8_5btgj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerFolder/CharacterBody3D"]
@@ -491,9 +554,14 @@ skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="PlayerFolder/CharacterBody3D"]
 transform = Transform3D(-1, 5.2108e-15, 1.19209e-07, 1.19209e-07, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 3.04584, 0)
-light_color = Color(0.901961, 0.788235, 0.72549, 1)
-light_energy = 0.844
+light_color = Color(0.901961, 0.717647, 0.619608, 1)
 light_size = 0.99
 light_specular = 2.09
 spot_range = 5.876
 spot_angle = 60.28
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 2.10105, 0.978171, 1.36856)
+material_override = SubResource("ShaderMaterial_p4v3p")
+mesh = SubResource("ArrayMesh_8igmp")
+skeleton = NodePath("")

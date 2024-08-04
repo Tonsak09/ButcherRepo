@@ -10,7 +10,7 @@ uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_n
 uniform sampler2D ASCII_texture: source_color;
 
 void fragment() {
-		float pixCount = 200.0;
+		float pixCount = 150.0;
 		float lx = (1.0/pixCount) / (1152.0/648.0);
 		float ly = (1.0/pixCount);
 		float valueX = floor((1.0/(lx))*SCREEN_UV.x)*lx;
@@ -32,7 +32,7 @@ void fragment() {
 		//COLOR.rgb = vec3(sectionedLum, sectionedLum, sectionedLum);
 		
 		localUV.x += (sectionedLum);
-		COLOR.rgb =  mix( vec3(tex_color.x, tex_color.y, tex_color.z), colorB / 256.0, texture(ASCII_texture, localUV).r) ;
+		COLOR.rgb =  mix( (vec3(tex_color.x, tex_color.y, tex_color.z)) * 1.5, colorB / 256.0, texture(ASCII_texture, localUV).r);
 		//COLOR.rgb = vec3(localUV.x, localUV.y, 0.0);
 		
 		//COLOR = vec4(valueX, valueY, 0, 1);
