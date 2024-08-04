@@ -9,11 +9,15 @@ var holdMouse : Vector2
 var yaw = 0.0
 var pitch = 0.0
 
+var canControl : bool 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	holdMouse = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	canControl = true 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,10 +25,17 @@ func _process(delta):
 	MovementBody(delta)
 	#MovementRot(delta)
 	
+	if Input.is_action_just_pressed("ToggleController"):
+		canControl = !canControl
+	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
 
 func _input(event):
+	
+	if !canControl:
+		return
+	
 	if event is InputEventMouseMotion:
 		# modify accumulated mouse rotation
 		yaw += event.relative.x * -speedH * get_process_delta_time()
@@ -35,6 +46,10 @@ func _input(event):
 
 
 func MovementBody(delta):
+	
+	if !canControl:
+		return
+	
 	var moveAxis : Vector3
 	
 	if Input.is_action_pressed("Forward"):

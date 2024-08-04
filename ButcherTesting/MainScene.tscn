@@ -1,9 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://b6vyfg3hxcxei"]
+[gd_scene load_steps=41 format=3 uid="uid://b6vyfg3hxcxei"]
 
 [ext_resource type="Texture2D" uid="uid://bkaklfsnldfst" path="res://Textures/post_example1.webp" id="1_quk44"]
 [ext_resource type="Shader" path="res://Hex.gdshader" id="2_a7t21"]
 [ext_resource type="Texture2D" uid="uid://bi1m5slxlo252" path="res://Textures/ASCII_Gradient_with_BG.png" id="3_o5lid"]
 [ext_resource type="Script" path="res://Scripts/FreeCamController.gd" id="4_84seh"]
+[ext_resource type="Script" path="res://Scripts/RoomMove.gd" id="5_awpbr"]
+[ext_resource type="Script" path="res://Scripts/Character.gd" id="6_876ea"]
+[ext_resource type="PackedScene" uid="uid://ckguiq0tsyxct" path="res://Models/character.fbx" id="7_oiro4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn62f"]
 shader = ExtResource("2_a7t21")
@@ -13,6 +16,7 @@ shader_parameter/colorB = Vector3(64, 83, 76)
 shader_parameter/ASCII_texture = ExtResource("3_o5lid")
 
 [sub_resource type="Environment" id="Environment_wdbnd"]
+ambient_light_source = 1
 glow_intensity = 1.28
 glow_bloom = 1.0
 
@@ -23,6 +27,10 @@ albedo_color = Color(1, 0.572549, 0.341176, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_wy3dk"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8innw"]
+height = 0.468133
+radius = 1.00986
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkfyn"]
 albedo_color = Color(0, 0.737255, 0.741176, 1)
 
@@ -32,6 +40,47 @@ albedo_color = Color(0, 0.737255, 0.741176, 1)
 albedo_color = Color(0.447059, 0.592157, 0.470588, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_ea0nw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jerf"]
+cull_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4764t"]
+resource_name = "DefaultMaterial"
+albedo_color = Color(0.735357, 0.735357, 0.735357, 1)
+metallic = 0.2
+roughness = 0.8
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yus55"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02001, 0.02, 0.02),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 9, 0, 11, 0, 8, 0, 12, 0, 0, 0, 1, 0, 1, 0, 13, 0, 12, 0, 3, 0, 14, 0, 2, 0, 3, 0, 15, 0, 14, 0, 16, 0, 18, 0, 17, 0, 16, 0, 19, 0, 18, 0, 20, 0, 22, 0, 21, 0, 20, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 25, 0, 27, 0, 24, 0, 28, 0, 30, 0, 29, 0, 29, 0, 31, 0, 28, 0, 23, 0, 8, 0, 11, 0, 22, 0, 23, 0, 11, 0, 15, 0, 31, 0, 14, 0, 15, 0, 28, 0, 31, 0, 24, 0, 27, 0, 18, 0, 18, 0, 19, 0, 24, 0, 21, 0, 17, 0, 20, 0, 21, 0, 16, 0, 17, 0, 12, 0, 13, 0, 6, 0, 6, 0, 7, 0, 12, 0, 26, 0, 30, 0, 25, 0, 26, 0, 29, 0, 30, 0, 10, 0, 5, 0, 9, 0, 10, 0, 4, 0, 5, 0),
+"name": "DefaultMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray(222, 255, 218, 3, 204, 7, 0, 0, 0, 0, 218, 3, 204, 7, 0, 0, 0, 0, 204, 7, 218, 3, 0, 0, 222, 255, 204, 7, 218, 3, 0, 0, 222, 255, 218, 3, 50, 248, 0, 0, 0, 0, 218, 3, 50, 248, 0, 0, 0, 0, 0, 0, 229, 238, 0, 0, 222, 255, 0, 0, 229, 238, 0, 0, 222, 255, 25, 17, 255, 255, 0, 0, 0, 0, 204, 7, 36, 252, 0, 0, 222, 255, 204, 7, 36, 252, 0, 0, 0, 0, 25, 17, 255, 255, 0, 0, 222, 255, 0, 0, 25, 17, 0, 0, 0, 0, 0, 0, 25, 17, 0, 0, 0, 0, 25, 17, 0, 0, 0, 0, 222, 255, 25, 17, 0, 0, 0, 0, 0, 0, 36, 252, 50, 248, 0, 0, 222, 255, 36, 252, 50, 248, 0, 0, 222, 255, 255, 255, 229, 238, 0, 0, 0, 0, 255, 255, 229, 238, 0, 0, 222, 255, 50, 248, 36, 252, 0, 0, 0, 0, 50, 248, 36, 252, 0, 0, 0, 0, 229, 238, 255, 255, 0, 0, 222, 255, 229, 238, 255, 255, 0, 0, 0, 0, 255, 255, 25, 17, 0, 0, 222, 255, 36, 252, 204, 7, 0, 0, 0, 0, 36, 252, 204, 7, 0, 0, 222, 255, 255, 255, 25, 17, 0, 0, 222, 255, 229, 238, 0, 0, 0, 0, 0, 0, 50, 248, 218, 3, 0, 0, 222, 255, 50, 248, 218, 3, 0, 0, 0, 0, 229, 238, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yvcnh"]
+resource_name = "Root Scene_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02001, 0.02, 0.02),
+"attribute_data": PackedByteArray(255, 95, 246, 64, 255, 31, 246, 64, 255, 31, 242, 65, 255, 95, 242, 65, 12, 158, 255, 63, 12, 158, 0, 0, 185, 155, 0, 0, 185, 155, 255, 63, 255, 159, 255, 63, 8, 159, 0, 0, 8, 159, 255, 63, 255, 159, 0, 0, 255, 95, 255, 63, 255, 31, 246, 64, 255, 95, 246, 64, 255, 31, 255, 63, 255, 95, 242, 65, 255, 31, 242, 65, 255, 31, 70, 68, 255, 95, 70, 68, 12, 158, 255, 191, 12, 158, 255, 127, 185, 155, 255, 127, 185, 155, 255, 191, 8, 159, 255, 127, 8, 159, 255, 191, 255, 159, 255, 191, 255, 159, 255, 127, 255, 31, 255, 127, 255, 95, 8, 127, 255, 31, 8, 127, 255, 95, 255, 127, 255, 95, 185, 123, 255, 31, 12, 126, 255, 95, 12, 126, 255, 31, 185, 123, 255, 159, 185, 123, 255, 223, 70, 68, 255, 159, 70, 68, 255, 223, 185, 123, 255, 95, 70, 68, 255, 31, 70, 68, 255, 31, 185, 123, 255, 95, 185, 123, 69, 100, 255, 191, 185, 155, 255, 127, 69, 100, 255, 127, 185, 155, 255, 191, 8, 159, 255, 191, 8, 159, 255, 127, 12, 158, 255, 127, 12, 158, 255, 191, 69, 100, 255, 63, 185, 155, 0, 0, 69, 100, 0, 0, 185, 155, 255, 63, 255, 31, 8, 127, 255, 95, 8, 127, 255, 95, 12, 126, 255, 31, 12, 126, 8, 159, 255, 63, 8, 159, 0, 0, 12, 158, 0, 0, 12, 158, 255, 63),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 9, 0, 11, 0, 8, 0, 12, 0, 14, 0, 13, 0, 13, 0, 15, 0, 12, 0, 16, 0, 18, 0, 17, 0, 16, 0, 19, 0, 18, 0, 20, 0, 22, 0, 21, 0, 20, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 24, 0, 27, 0, 26, 0, 28, 0, 30, 0, 29, 0, 29, 0, 31, 0, 28, 0, 32, 0, 34, 0, 33, 0, 33, 0, 35, 0, 32, 0, 36, 0, 38, 0, 37, 0, 39, 0, 36, 0, 37, 0, 40, 0, 42, 0, 41, 0, 40, 0, 43, 0, 42, 0, 44, 0, 46, 0, 45, 0, 45, 0, 47, 0, 44, 0, 48, 0, 50, 0, 49, 0, 48, 0, 51, 0, 50, 0, 52, 0, 54, 0, 53, 0, 53, 0, 55, 0, 52, 0, 56, 0, 58, 0, 57, 0, 56, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 60, 0, 63, 0, 62, 0),
+"material": SubResource("StandardMaterial3D_4764t"),
+"name": "DefaultMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray(222, 255, 218, 3, 204, 7, 255, 223, 0, 0, 218, 3, 204, 7, 255, 223, 0, 0, 204, 7, 218, 3, 255, 223, 222, 255, 204, 7, 218, 3, 255, 223, 222, 255, 218, 3, 50, 248, 200, 204, 0, 0, 218, 3, 50, 248, 200, 204, 0, 0, 0, 0, 229, 238, 200, 204, 222, 255, 0, 0, 229, 238, 200, 204, 222, 255, 25, 17, 255, 255, 140, 193, 0, 0, 204, 7, 36, 252, 140, 193, 222, 255, 204, 7, 36, 252, 140, 193, 0, 0, 25, 17, 255, 255, 140, 193, 222, 255, 0, 0, 25, 17, 255, 207, 0, 0, 218, 3, 204, 7, 255, 207, 222, 255, 218, 3, 204, 7, 255, 207, 0, 0, 0, 0, 25, 17, 255, 207, 222, 255, 204, 7, 218, 3, 255, 239, 0, 0, 204, 7, 218, 3, 255, 239, 0, 0, 25, 17, 0, 0, 255, 239, 222, 255, 25, 17, 0, 0, 255, 239, 0, 0, 36, 252, 50, 248, 200, 204, 222, 255, 36, 252, 50, 248, 200, 204, 222, 255, 255, 255, 229, 238, 200, 204, 0, 0, 255, 255, 229, 238, 200, 204, 222, 255, 50, 248, 36, 252, 140, 193, 0, 0, 50, 248, 36, 252, 140, 193, 0, 0, 229, 238, 255, 255, 140, 193, 222, 255, 229, 238, 255, 255, 140, 193, 0, 0, 255, 255, 25, 17, 255, 207, 222, 255, 36, 252, 204, 7, 255, 207, 0, 0, 36, 252, 204, 7, 255, 207, 222, 255, 255, 255, 25, 17, 255, 207, 222, 255, 229, 238, 0, 0, 255, 239, 0, 0, 50, 248, 218, 3, 255, 239, 222, 255, 50, 248, 218, 3, 255, 239, 0, 0, 229, 238, 0, 0, 255, 239, 222, 255, 229, 238, 255, 255, 255, 255, 0, 0, 25, 17, 255, 255, 255, 255, 222, 255, 25, 17, 255, 255, 255, 255, 0, 0, 229, 238, 255, 255, 255, 255, 222, 255, 25, 17, 0, 0, 255, 255, 0, 0, 25, 17, 0, 0, 255, 255, 0, 0, 229, 238, 0, 0, 255, 255, 222, 255, 229, 238, 0, 0, 255, 255, 0, 0, 255, 255, 25, 17, 84, 213, 222, 255, 255, 255, 229, 238, 84, 213, 222, 255, 255, 255, 25, 17, 84, 213, 0, 0, 255, 255, 229, 238, 84, 213, 0, 0, 50, 248, 36, 252, 252, 197, 222, 255, 50, 248, 36, 252, 252, 197, 222, 255, 36, 252, 50, 248, 252, 197, 0, 0, 36, 252, 50, 248, 252, 197, 222, 255, 0, 0, 25, 17, 84, 213, 0, 0, 0, 0, 229, 238, 84, 213, 0, 0, 0, 0, 25, 17, 84, 213, 222, 255, 0, 0, 229, 238, 84, 213, 0, 0, 36, 252, 204, 7, 255, 223, 222, 255, 36, 252, 204, 7, 255, 223, 222, 255, 50, 248, 218, 3, 255, 223, 0, 0, 50, 248, 218, 3, 255, 223, 222, 255, 204, 7, 36, 252, 252, 197, 0, 0, 204, 7, 36, 252, 252, 197, 0, 0, 218, 3, 50, 248, 252, 197, 222, 255, 218, 3, 50, 248, 252, 197, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 155, 36, 99, 219, 155, 36, 99, 219, 155, 36, 99, 219, 155, 36, 99, 219, 54, 18, 200, 237, 54, 18, 200, 237, 54, 18, 200, 237, 54, 18, 200, 237, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 154, 164, 154, 164, 154, 164, 154, 164, 154, 164, 154, 164, 154, 164, 154, 164, 54, 146, 54, 146, 54, 146, 54, 146, 54, 146, 54, 146, 54, 146, 54, 146, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 254, 156, 254, 156, 254, 156, 254, 156, 254, 156, 254, 156, 254, 156, 254, 156, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 28, 255, 226, 255, 28, 255, 226, 255, 28, 255, 226, 255, 28, 255, 226)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yus55")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b315"]
 resource_name = "Material"
@@ -205,6 +254,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5cydq")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8o5pl"]
+size = Vector3(0.0554886, 0.00265121, 0.0991364)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_ls1y3"]
 _surfaces = [{
 "aabb": AABB(-0.01, -0.03, -0.01, 0.04001, 0.04, 0.02001),
@@ -269,12 +321,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6i7ud")
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_871qy"]
 
-[node name="PostExample1" type="Sprite2D" parent="."]
-position = Vector2(563, 322)
-scale = Vector2(1.15739, 1.15739)
-texture = ExtResource("1_quk44")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3i7ii"]
+
+[node name="Node3D" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -288,16 +339,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(161, 76)
+texture = ExtResource("1_quk44")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wdbnd")
 camera_attributes = SubResource("CameraAttributesPractical_vk4ur")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.968274, 0.24989, 0, -0.24989, 0.968274, -1.19209e-07, 1.93853, 3.58483)
-script = ExtResource("4_84seh")
-speed = 10.0
-speedH = 0.1
-speedV = 0.1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0581824, 0.187645, 0.980512, 0.997423, 0.0303643, -0.0649969, -0.0419689, 0.981767, -0.185395, 0, 0, 0)
@@ -305,11 +354,17 @@ visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.237532, 0.507813, 0.828073, 0.968027, 0.0529774, 0.245189, 0.0806413, 0.859837, -0.50416, 0, 0, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932229, 0)
 material_override = SubResource("StandardMaterial3D_1vn06")
 mesh = SubResource("TorusMesh_wy3dk")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("CylinderShape3D_8innw")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12201, 0.932229, 0)
@@ -320,6 +375,12 @@ mesh = SubResource("SphereMesh_h62st")
 transform = Transform3D(0.673851, -0.25406, 0.693815, 0.620032, 0.705151, -0.34398, -0.401852, 0.661979, 0.632692, -2.37799, 0.932229, 0)
 material_override = SubResource("StandardMaterial3D_yy184")
 mesh = SubResource("PrismMesh_ea0nw")
+
+[node name="Cube_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, 2.465, 2, 31.0813)
+material_override = SubResource("StandardMaterial3D_6jerf")
+mesh = SubResource("ArrayMesh_yvcnh")
+skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42311, 1.29029, 0.780599)
@@ -335,7 +396,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0703, 0, 30.6896)
 [node name="RootNode" type="Node3D" parent="Root Scene2"]
 
 [node name="Square" type="MeshInstance3D" parent="Root Scene2/RootNode"]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -1, 1, 0)
+transform = Transform3D(400, 0, 0, 0, -1.79217e-05, 100, 0, -410, -4.37114e-06, -14, 1, 0)
+visible = false
 mesh = SubResource("ArrayMesh_35b00")
 skeleton = NodePath("")
 
@@ -353,6 +415,12 @@ skeleton = NodePath("")
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -5, 1, -8)
 mesh = SubResource("ArrayMesh_efxqg")
 skeleton = NodePath("")
+
+[node name="Area3D" type="CharacterBody3D" parent="Root Scene2/RootNode/L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene2/RootNode/L/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209527, 0.00974378, 0.00361179)
+shape = SubResource("BoxShape3D_8o5pl")
 
 [node name="BigSquare" type="MeshInstance3D" parent="Root Scene2/RootNode"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 1, 1, -10)
@@ -375,3 +443,57 @@ light_color = Color(1, 0.572549, 0.521569, 1)
 [node name="OmniLight3D" type="OmniLight3D" parent="Root Scene2/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -8)
 light_color = Color(0.337255, 1, 0.34902, 1)
+
+[node name="PlayerFolder" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerFolder"]
+transform = Transform3D(-4.37114e-08, 0.461749, -0.887011, 0, 0.887011, 0.461749, 1, 2.01837e-08, -3.87725e-08, -6.34626, 8.20975, 30.5848)
+script = ExtResource("4_84seh")
+speed = 10.0
+speedH = 0.1
+speedV = 0.1
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerFolder/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.47035e-08, -1, 0, 1, -4.47035e-08, 0, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("5_awpbr")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerFolder" node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 31)
+script = ExtResource("6_876ea")
+cam = NodePath("../Camera3D")
+moveSpeed = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerFolder/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_871qy")
+
+[node name="Root Scene" parent="PlayerFolder/CharacterBody3D" instance=ExtResource("7_oiro4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlayerFolder/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.522, 0)
+visible = false
+light_color = Color(0.952941, 0.835294, 0.756863, 1)
+light_energy = 0.337
+light_indirect_energy = 0.0
+light_specular = 0.0
+distance_fade_begin = 0.0
+distance_fade_length = 1102.26
+omni_range = 4.9749
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerFolder/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_3i7ii")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerFolder/CharacterBody3D"]
+transform = Transform3D(-1, 5.2108e-15, 1.19209e-07, 1.19209e-07, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 3.04584, 0)
+light_color = Color(0.901961, 0.788235, 0.72549, 1)
+light_energy = 0.844
+light_size = 0.99
+light_specular = 2.09
+spot_range = 5.876
+spot_angle = 60.28
