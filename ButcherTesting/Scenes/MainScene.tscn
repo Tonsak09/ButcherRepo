@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b6vyfg3hxcxei"]
+[gd_scene load_steps=51 format=3 uid="uid://b6vyfg3hxcxei"]
 
 [ext_resource type="Shader" path="res://Shaders/Hex.gdshader" id="1_uifda"]
 [ext_resource type="Texture2D" uid="uid://bi1m5slxlo252" path="res://Textures/ASCII_Gradient_with_BG.png" id="2_ryc4w"]
@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="7_tn18a"]
 [ext_resource type="PackedScene" uid="uid://ckguiq0tsyxct" path="res://Models/character.fbx" id="8_5btgj"]
 [ext_resource type="Shader" uid="uid://cgccd20k6t5l6" path="res://Materials/Trunchet.res" id="9_jsqj4"]
-[ext_resource type="Texture2D" uid="uid://osgw2j6xwlky" path="res://Textures/Trunchet.png" id="10_a2nua"]
-[ext_resource type="Texture2D" uid="uid://dylc4gotx6nft" path="res://Textures/icon.svg" id="10_k70ke"]
+[ext_resource type="Texture2D" uid="uid://t0no5aqlopw0" path="res://Textures/noiseTexture.png" id="10_lt0k3"]
+[ext_resource type="Texture2D" uid="uid://cria0k5q6odu6" path="res://Textures/Trunchet/TrunchetTileA.png" id="11_utju3"]
+[ext_resource type="Texture2D" uid="uid://cd8yi4mha1et0" path="res://Textures/Trunchet/TrunchetTileB.png" id="12_racn1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn62f"]
 shader = ExtResource("1_uifda")
@@ -337,9 +338,9 @@ point_count = 2
 render_priority = 0
 shader = ExtResource("9_jsqj4")
 shader_parameter/CellCount = 4.0
-shader_parameter/TileCount = 4.0
-shader_parameter/Texture2DParameter = ExtResource("10_k70ke")
-shader_parameter/Texture2DParameter2 = ExtResource("10_a2nua")
+shader_parameter/Texture2DParameter3 = ExtResource("10_lt0k3")
+shader_parameter/TilePatternA = ExtResource("11_utju3")
+shader_parameter/TilePatternB = ExtResource("12_racn1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7rr7"]
 resource_name = "DefaultMaterial"
@@ -561,7 +562,7 @@ spot_range = 5.876
 spot_angle = 60.28
 
 [node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 2.10105, 0.978171, 1.36856)
+transform = Transform3D(100, 0, 0, 0, -1.20369e-05, 100, 0, -100.973, -1.19209e-05, 2.10105, 0.0730582, 30.6121)
 material_override = SubResource("ShaderMaterial_p4v3p")
 mesh = SubResource("ArrayMesh_8igmp")
 skeleton = NodePath("")

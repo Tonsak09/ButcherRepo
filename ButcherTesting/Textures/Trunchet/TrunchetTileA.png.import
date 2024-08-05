@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg13wno7yydl0"
-path.s3tc="res://.godot/imported/ASCII_Gradient.png-314b3a9add3077387f16778069757534.s3tc.ctex"
+uid="uid://cria0k5q6odu6"
+path.s3tc="res://.godot/imported/TrunchetTileA.png-652976da34db35b14b43ccea92c74d07.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/ASCII_Gradient.png"
-dest_files=["res://.godot/imported/ASCII_Gradient.png-314b3a9add3077387f16778069757534.s3tc.ctex"]
+source_file="res://Textures/Trunchet/TrunchetTileA.png"
+dest_files=["res://.godot/imported/TrunchetTileA.png-652976da34db35b14b43ccea92c74d07.s3tc.ctex"]
 
 [params]
 
