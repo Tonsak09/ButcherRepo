@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckguiq0tsyxct"
-path="res://.godot/imported/character.fbx-8d8bb78df555f5956bd808a9055c1998.scn"
+uid="uid://bymfv71vy0x54"
+path="res://.godot/imported/RoundedHallFrame.fbx-ec489b9426e7d0ef3911480ed6067b83.scn"
 
 [deps]
 
-source_file="res://Models/character.fbx"
-dest_files=["res://.godot/imported/character.fbx-8d8bb78df555f5956bd808a9055c1998.scn"]
+source_file="res://Models/Testing/RoundedHallFrame.fbx"
+dest_files=["res://.godot/imported/RoundedHallFrame.fbx-ec489b9426e7d0ef3911480ed6067b83.scn"]
 
 [params]
 

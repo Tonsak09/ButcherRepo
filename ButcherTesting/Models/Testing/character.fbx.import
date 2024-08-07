@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://7q4xrfcfqhm4"
-path="res://.godot/imported/ButcherModels_1.fbx-7f114c784cd1ff31981a09ae3fd51441.scn"
+uid="uid://ckguiq0tsyxct"
+path="res://.godot/imported/character.fbx-9e81e820475192b65b5055d15dd20256.scn"
 
 [deps]
 
-source_file="res://Models/ButcherModels_1.fbx"
-dest_files=["res://.godot/imported/ButcherModels_1.fbx-7f114c784cd1ff31981a09ae3fd51441.scn"]
+source_file="res://Models/Testing/character.fbx"
+dest_files=["res://.godot/imported/character.fbx-9e81e820475192b65b5055d15dd20256.scn"]
 
 [params]
 

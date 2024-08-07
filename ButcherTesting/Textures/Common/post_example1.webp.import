@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpl6a0eamw0r"
-path="res://.godot/imported/ASCII_Gradient_Blackout.png-68bcc17a8677bf0503178708e1c51e6a.ctex"
+uid="uid://bkaklfsnldfst"
+path="res://.godot/imported/post_example1.webp-ddbd52d5e87b138d94ff31137989b35f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ASCII_Gradient_Blackout.png"
-dest_files=["res://.godot/imported/ASCII_Gradient_Blackout.png-68bcc17a8677bf0503178708e1c51e6a.ctex"]
+source_file="res://Textures/Common/post_example1.webp"
+dest_files=["res://.godot/imported/post_example1.webp-ddbd52d5e87b138d94ff31137989b35f.ctex"]
 
 [params]
 

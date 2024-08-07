@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx6afdle6vbhs"
-path="res://.godot/imported/Drone.fbx-e54b61153e1d36e2e76556e0356c9c85.scn"
+uid="uid://chp1iwsboc043"
+path="res://.godot/imported/Plane.fbx-309f8aaef7606c083bbedf7f8b55b3bf.scn"
 
 [deps]
 
-source_file="res://Models/Drone.fbx"
-dest_files=["res://.godot/imported/Drone.fbx-e54b61153e1d36e2e76556e0356c9c85.scn"]
+source_file="res://Models/Testing/Plane.fbx"
+dest_files=["res://.godot/imported/Plane.fbx-309f8aaef7606c083bbedf7f8b55b3bf.scn"]
 
 [params]
 

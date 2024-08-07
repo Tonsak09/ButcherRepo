@@ -13,7 +13,7 @@ config_version=5
 config/name="ButcherTesting"
 run/main_scene="res://Scenes/MainScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Textures/icon.svg"
+config/icon="res://Textures/Common/icon.svg"
 
 [display]
 

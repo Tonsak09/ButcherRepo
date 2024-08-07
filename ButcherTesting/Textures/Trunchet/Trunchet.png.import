@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://osgw2j6xwlky"
-path.s3tc="res://.godot/imported/Trunchet.png-e78a59e0fbd0949aeca3a8c9822a26e9.s3tc.ctex"
+path.s3tc="res://.godot/imported/Trunchet.png-17f821c94edad9b4bd0a350c667012fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Trunchet.png"
-dest_files=["res://.godot/imported/Trunchet.png-e78a59e0fbd0949aeca3a8c9822a26e9.s3tc.ctex"]
+source_file="res://Textures/Trunchet/Trunchet.png"
+dest_files=["res://.godot/imported/Trunchet.png-17f821c94edad9b4bd0a350c667012fd.s3tc.ctex"]
 
 [params]
 

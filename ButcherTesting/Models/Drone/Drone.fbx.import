@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqmvyxr4e66ts"
-path="res://.godot/imported/Backdrop.fbx-924a4ba6905c1fccc3dd807baffdc272.scn"
+uid="uid://cx6afdle6vbhs"
+path="res://.godot/imported/Drone.fbx-b23bd33f592b3ebb3cc79fe7448cc828.scn"
 
 [deps]
 
-source_file="res://Models/Backdrop.fbx"
-dest_files=["res://.godot/imported/Backdrop.fbx-924a4ba6905c1fccc3dd807baffdc272.scn"]
+source_file="res://Models/Drone/Drone.fbx"
+dest_files=["res://.godot/imported/Drone.fbx-b23bd33f592b3ebb3cc79fe7448cc828.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bojo074jxlrma"
-path="res://.godot/imported/ButcherModels.fbx-02a627737defe6e964a2181cc6e9c003.scn"
+uid="uid://ctqgq3yt5scc8"
+path="res://.godot/imported/DroneLeg.fbx-ffb25dcb3cfe78d69d28b03091850335.scn"
 
 [deps]
 
-source_file="res://Models/ButcherModels.fbx"
-dest_files=["res://.godot/imported/ButcherModels.fbx-02a627737defe6e964a2181cc6e9c003.scn"]
+source_file="res://Models/Drone/DroneLeg.fbx"
+dest_files=["res://.godot/imported/DroneLeg.fbx-ffb25dcb3cfe78d69d28b03091850335.scn"]
 
 [params]
 
