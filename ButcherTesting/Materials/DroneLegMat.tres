@@ -1,5 +1,15 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b2sennol2y8xn"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b2sennol2y8xn"]
+
+[ext_resource type="Texture2D" uid="uid://cfcjkoe8kdxne" path="res://Textures/DroneTextures/DroneLeg/Material_Base_color.png" id="1_0rw6c"]
+[ext_resource type="Texture2D" uid="uid://c127vbcgxbkpk" path="res://Textures/DroneTextures/DroneLeg/Material_Metallic.png" id="2_dj2id"]
+[ext_resource type="Texture2D" uid="uid://bxiab0qrrv6nq" path="res://Textures/DroneTextures/DroneLeg/Material_Normal.png" id="3_x0vmn"]
+[ext_resource type="Texture2D" uid="uid://banj3wykif1dt" path="res://Textures/DroneTextures/DroneLeg/Material_Roughness.png" id="4_u2ei2"]
 
 [resource]
-albedo_color = Color(0.584411, 0.517021, 0.476755, 1)
-metallic = 0.84
+albedo_color = Color(0.686275, 0.686275, 0.686275, 1)
+albedo_texture = ExtResource("1_0rw6c")
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_dj2id")
+roughness_texture = ExtResource("4_u2ei2")
+normal_enabled = true
+normal_texture = ExtResource("3_x0vmn")
