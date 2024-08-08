@@ -30,7 +30,9 @@ func _process(delta):
 	var magLerp = clamp(speed / thresholdSpeed, 0, 1)
 	timer += delta * lerp(idleSpeed, activeSpeed, magLerp)
 	
-	position = startPos + dirToTarget * sin(timer) * lerp(idleMag, activeMag, magLerp) * delta
+	position = startPos + dirToTarget * sin(timer) * lerp(idleMag, activeMag, magLerp)
+	
+	#position = startPos + dirToTarget * sin(timer) * lerp(idleMag, activeMag, magLerp) * delta
 	
 	# Interpolate leg position based on speed 
 	#position = lerp(GetIdlePos(), GetActivePos(), clamp(speed / thresholdSpeed, 0, 1) )

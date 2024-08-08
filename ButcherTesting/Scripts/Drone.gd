@@ -9,6 +9,7 @@ extends Node3D
 @export var bobAcitve : float 
 
 var vel : Vector3
+var dir : Vector3
 var holdPos : Vector3 # Global position previous process 
 
 var timer : float 
@@ -37,7 +38,9 @@ func _process(delta):
 	var speed = currVel.length()
 	
 	if speed > 0.1:
-		vel = currVel
+		dir = currVel.normalized()
+	
+	vel = currVel
 	
 	timer += delta 
 	TurningAndBobbing(delta, speed)
@@ -53,7 +56,7 @@ func TurningAndBobbing(delta, speed):
 	
 	
 	var projFor = Vector2(transform.basis.x.x, transform.basis.x.z).normalized()
-	var projVel = Vector2(vel.x, vel.z).normalized()
+	var projVel = Vector2(dir.x, dir.z).normalized()
 	var targetAngle = -projFor.angle_to(projVel)
 	
 	currAngle = lerp(currAngle, targetAngle, 0.1) #angle_difference(currAngle, targetAngle)
