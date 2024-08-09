@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://4osfna5lvwtd"]
+
+[ext_resource type="Texture2D" uid="uid://bq31hrc6ibo2l" path="res://Textures/ButcherCover.png" id="1_slkvi"]
+[ext_resource type="FontFile" uid="uid://d1j405bteax80" path="res://Fonts/Anton/Anton-Regular.ttf" id="2_h3bp2"]
+[ext_resource type="Shader" path="res://Shaders/Hex.gdshader" id="3_q2y4y"]
+[ext_resource type="Texture2D" uid="uid://dvpl6a0eamw0r" path="res://Textures/ASCII Gradients/ASCII_Gradient_Blackout.png" id="4_3k2jx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbbfy"]
+shader = ExtResource("3_q2y4y")
+shader_parameter/size = Vector2(32, 28)
+shader_parameter/colorA = null
+shader_parameter/colorB = Vector3(24, 30, 32)
+shader_parameter/ASCII_texture = ExtResource("4_3k2jx")
+
+[node name="StartUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -704.0
+offset_top = 62.0
+offset_right = -254.0
+offset_bottom = 625.0
+texture = ExtResource("1_slkvi")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0666667, 0.0588235, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 200.0
+offset_right = -993.0
+offset_bottom = -401.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_h3bp2")
+theme_override_font_sizes/font_size = 25
+text = "Play"
+alignment = 0
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 240.0
+offset_right = -993.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_h3bp2")
+theme_override_font_sizes/font_size = 25
+text = "Trailer"
+alignment = 0
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 280.0
+offset_right = -993.0
+offset_bottom = -321.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_h3bp2")
+theme_override_font_sizes/font_size = 25
+text = "Settings"
+alignment = 0
+
+[node name="Button4" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 320.0
+offset_right = -993.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_h3bp2")
+theme_override_font_sizes/font_size = 25
+text = "Credits"
+alignment = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_rbbfy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 51.0
+offset_right = -691.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.627451, 0.137255, 0.203922, 1)
+theme_override_fonts/normal_font = ExtResource("2_h3bp2")
+theme_override_font_sizes/normal_font_size = 116
+text = "BUTCHER"
