@@ -9,7 +9,7 @@ extends Node3D
 @export var bobAcitve : float 
 
 var vel : Vector3
-var dir : Vector3
+@export var dir : Vector3
 var holdPos : Vector3 # Global position previous process 
 
 var timer : float 

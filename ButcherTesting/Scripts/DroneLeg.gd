@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var target : Node3D
+#@export var target : Node3D
+@export var droneLogic : Node3D
 @export var droneBody : Node3D
 
 @export var thresholdSpeed : float
@@ -19,12 +20,12 @@ var timer : float
 
 func _ready():
 	startPos = position
-	dirToTarget = (target.global_position - global_position).normalized()
+	dirToTarget = (droneBody.global_position - global_position).normalized()
 
 func _process(delta):
 	# Update Physics info  
 	
-	var speed = droneBody.vel.length()
+	var speed = droneLogic.vel.length()
 	
 	
 	var magLerp = clamp(speed / thresholdSpeed, 0, 1)
@@ -32,7 +33,7 @@ func _process(delta):
 	
 	position = startPos + dirToTarget * sin(timer) * lerp(idleMag, activeMag, magLerp)
 	
-	#position = startPos + dirToTarget * sin(timer) * lerp(idleMag, activeMag, magLerp) * delta
+	#position = startPos + dirToTarget * sin(timer) * lsaerp(idleMag, activeMag, magLerp) * delta
 	
 	# Interpolate leg position based on speed 
 	#position = lerp(GetIdlePos(), GetActivePos(), clamp(speed / thresholdSpeed, 0, 1) )

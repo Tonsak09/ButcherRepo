@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="ButcherTesting"
-run/main_scene="res://Scenes/StartUI.tscn"
+run/main_scene="res://Scenes/ConsoleInteract.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Textures/Common/icon.svg"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 
 [input]
