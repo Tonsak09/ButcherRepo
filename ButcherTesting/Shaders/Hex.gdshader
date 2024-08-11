@@ -16,13 +16,14 @@ void fragment() {
 		float valueX = floor((1.0/(lx))*SCREEN_UV.x)*lx;
 		float valueY = floor((1.0/(ly))*SCREEN_UV.y)*ly;
 		
+		// Creating local cell uv 
 		float disX = SCREEN_UV.x - valueX;
 		float disY = SCREEN_UV.y - valueY;
 		vec2 localUV = vec2((disX * pixCount) / 10.0, disY * pixCount); // Gets local uv of each cell 
 		//COLOR.rgb = vec3(localUV.x, localUV.y,   0);
 		
 		// floor(lum * charCount)
-		vec4 tex_color = texture (screen_texture, vec2(valueX, valueY), 0.0);
+		vec4 tex_color = texture (screen_texture, vec2(valueX + lx / 2.0, valueY + lx / 2.0), 0.0);
 		vec3 reducedColor = mix(vec3(dot(tex_color.rgb, vec3(0.299, 0.587, 0.114))), tex_color.rgb, 0.0);
 		
 		
