@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://nb0d327fcn3s"]
+[gd_scene load_steps=21 format=3 uid="uid://nb0d327fcn3s"]
 
 [ext_resource type="Shader" path="res://Shaders/Hex.gdshader" id="1_kq2ra"]
 [ext_resource type="Texture2D" uid="uid://dvpl6a0eamw0r" path="res://Textures/ASCII Gradients/ASCII_Gradient_Blackout.png" id="2_kxqdj"]
 [ext_resource type="Script" path="res://Scripts/Drone.gd" id="3_2rjd5"]
 [ext_resource type="Script" path="res://Scripts/IntroScene/Console.gd" id="3_jl286"]
-[ext_resource type="Texture2D" uid="uid://cg13wno7yydl0" path="res://Textures/ASCII Gradients/ASCII_Gradient.png" id="3_qgsy6"]
 [ext_resource type="FontFile" uid="uid://cvmb8iqiyb4au" path="res://Fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf" id="4_cx5sp"]
 [ext_resource type="Material" uid="uid://b44og8e5tc6ca" path="res://Materials/DroneMat.tres" id="4_kf2nt"]
 [ext_resource type="PackedScene" uid="uid://wdd65ro8ha0i" path="res://Prefabs/Drone_Leg.tscn" id="5_t0f2r"]
@@ -60,14 +59,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f1sxb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lljfu"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("3_qgsy6")
-emission_enabled = true
-emission = Color(0.803922, 0.803922, 0.803922, 1)
-emission_energy_multiplier = 16.0
+[sub_resource type="TextMesh" id="TextMesh_jdlw3"]
+text = "Booting...
+Waking Mind...
+Connecting..."
+font_size = 33
+horizontal_alignment = 0
+vertical_alignment = 0
+line_spacing = -14.84
+curve_step = 0.1
+depth = 0.0
 
 [sub_resource type="Environment" id="Environment_r6xyo"]
 glow_enabled = true
@@ -137,33 +138,37 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." node_paths=PackedStringArray("terminalLabel")]
 transform = Transform3D(50.5363, 16.8247, 9.97117e-07, -9.35143e-14, -1.22827e-05, 51.2239, 8.36443, -101.652, -6.0244e-06, 0.179347, 0, -0.0496567)
 material_override = SubResource("StandardMaterial3D_774ja")
 mesh = SubResource("ArrayMesh_hlf6r")
 skeleton = NodePath("")
 script = ExtResource("3_jl286")
-
-[node name="Sprite3D" type="Sprite3D" parent="Cube"]
-transform = Transform3D(2.79397e-09, -0.022632, 0.00508541, 0.0146449, -2.79397e-09, -5.82077e-11, 5.0254e-10, 0.022632, 0.00508541, -0.00276283, 0.000880143, 0.00829691)
-visible = false
-material_override = SubResource("StandardMaterial3D_lljfu")
-texture = ExtResource("3_qgsy6")
+terminalLabel = NodePath("MeshInstance3D")
+dotTimer = 0.2
+lines = Array[String](["Booting", "Waking Mind", "Connecting"])
+codePause = 0.1
+codeActiveMax = 3
+codeLines = Array[String](["01000100 ", "01101111", "00100000", "01111001", "01101111", "01110101", "00100000", "01100100", "01110010", "01100101", "01100001", "01101101", "00100000", "01101111", "01100110", "00100000", "01100101", "01101100", "01100101", "01100011", "01110100", "01110010", "01101001", "01100011", "00100000", "01110011", "01101000", "01100101", "01100101", "01110000", "00111111"])
 
 [node name="Label3D" type="Label3D" parent="Cube"]
-transform = Transform3D(0, -0.0224558, 0.0235538, 0.00783568, -1.39698e-09, 0, 2.2016e-10, 0.0188426, 0.0280703, -0.00694005, -0.00174968, 0.0121836)
+transform = Transform3D(6.98492e-10, -0.0197409, 0.0235538, 0.00783568, -9.31323e-10, 0, 2.2016e-10, 0.0165646, 0.0280703, -0.00711659, -0.00307229, 0.012615)
+visible = false
+modulate = Color(1, 1, 0.454902, 1)
 text = "Booting...
 Waking Mind...
-Connecting...
-OWeb Linking...
-"
+Connecting..."
 font = ExtResource("4_cx5sp")
-font_size = 22
+font_size = 33
 outline_size = 0
 horizontal_alignment = 0
 vertical_alignment = 0
 line_spacing = -4.145
 autowrap_mode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
+transform = Transform3D(1.39698e-09, -0.0104652, 0.0217659, 0.00387366, 2.38651e-09, -8.3819e-09, 2.61206e-10, 0.00772715, 0.0294783, -0.0071166, -0.00307229, 0.012615)
+mesh = SubResource("TextMesh_jdlw3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.419452, 0.907777, 0, 0.907777, 0.419452, -1, 1.83348e-08, -3.96802e-08, 1.389, 0.944, 0.235)
@@ -172,14 +177,9 @@ transform = Transform3D(-4.37114e-08, -0.419452, 0.907777, 0, 0.907777, 0.419452
 environment = SubResource("Environment_r6xyo")
 camera_attributes = SubResource("CameraAttributesPractical_a8gah")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.972658, -1.01515e-08, 0.23224, -0.23224, -4.25163e-08, 0.972658, 0, -1, -4.37114e-08, 0.899574, 2.94985, 0.0920234)
-visible = false
-light_energy = 2.615
-light_specular = 0.56
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-9.91913e-09, -0.973913, 0.226923, -4.25711e-08, 0.226923, 0.973913, -1, -2.66454e-15, -4.37114e-08, 0, 0, 0)
+visible = false
 light_energy = 0.8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -250,3 +250,14 @@ transform = Transform3D(1.12907e-06, -8.61, -3.76355e-07, 7.5271e-07, 3.76355e-0
 droneLogic = NodePath("..")
 droneBody = NodePath("../DroneBody")
 idleSpeed = 1.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.99989, 0.00718764, -0.012957, 0.0125811, 0.0500859, 0.998666, 0.00782701, -0.998719, 0.04999, -0.522989, 1.53556, 1.83593)
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.863033, -0.151883, 0.481773, -0.504857, -0.226991, 0.832823, -0.0171333, -0.961981, -0.27258, 1.15059, 2.18003, -0.165484)
+light_energy = 2.0
+shadow_enabled = true
+spot_angle = 59.05
+spot_angle_attenuation = 0.406126
