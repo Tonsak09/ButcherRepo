@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://4osfna5lvwtd"]
+[gd_scene load_steps=8 format=3 uid="uid://4osfna5lvwtd"]
 
+[ext_resource type="Script" path="res://Scripts/StartUIManager.gd" id="1_cc6np"]
 [ext_resource type="Texture2D" uid="uid://bq31hrc6ibo2l" path="res://Textures/ButcherCover.png" id="1_slkvi"]
 [ext_resource type="FontFile" uid="uid://d1j405bteax80" path="res://Fonts/Anton/Anton-Regular.ttf" id="2_h3bp2"]
 [ext_resource type="Shader" path="res://Shaders/Hex.gdshader" id="3_q2y4y"]
 [ext_resource type="Texture2D" uid="uid://dvpl6a0eamw0r" path="res://Textures/ASCII Gradients/ASCII_Gradient_Blackout.png" id="4_3k2jx"]
+[ext_resource type="Script" path="res://Scripts/StartButton.gd" id="4_o7x4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rbbfy"]
 shader = ExtResource("3_q2y4y")
@@ -12,13 +14,15 @@ shader_parameter/colorA = null
 shader_parameter/colorB = Vector3(24, 30, 32)
 shader_parameter/ASCII_texture = ExtResource("4_3k2jx")
 
-[node name="StartUi" type="Control"]
+[node name="StartUi" type="Control" node_paths=PackedStringArray("buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cc6np")
+buttons = [NodePath("Button"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -33,9 +37,9 @@ offset_bottom = 625.0
 texture = ExtResource("1_slkvi")
 expand_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,13 +47,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0509804, 0.0666667, 0.0588235, 1)
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
 offset_top = 200.0
-offset_right = -993.0
+offset_right = -730.0
 offset_bottom = -401.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -57,54 +62,63 @@ theme_override_fonts/font = ExtResource("2_h3bp2")
 theme_override_font_sizes/font_size = 25
 text = "Play"
 alignment = 0
+script = ExtResource("4_o7x4o")
 
-[node name="Button2" type="Button" parent="CanvasLayer"]
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
-offset_top = 240.0
-offset_right = -993.0
-offset_bottom = -361.0
+offset_top = 247.0
+offset_right = -730.0
+offset_bottom = -354.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_h3bp2")
 theme_override_font_sizes/font_size = 25
-text = "Trailer"
+text = "Trailer
+"
 alignment = 0
+script = ExtResource("4_o7x4o")
 
-[node name="Button3" type="Button" parent="CanvasLayer"]
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
-offset_top = 280.0
-offset_right = -993.0
-offset_bottom = -321.0
+offset_top = 294.0
+offset_right = -730.0
+offset_bottom = -307.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_h3bp2")
 theme_override_font_sizes/font_size = 25
 text = "Settings"
 alignment = 0
+script = ExtResource("4_o7x4o")
 
-[node name="Button4" type="Button" parent="CanvasLayer"]
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
-offset_top = 320.0
-offset_right = -993.0
-offset_bottom = -281.0
+offset_top = 341.0
+offset_right = -730.0
+offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_h3bp2")
 theme_override_font_sizes/font_size = 25
 text = "Credits"
 alignment = 0
+script = ExtResource("4_o7x4o")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rbbfy")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -112,8 +126,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -123,7 +139,17 @@ offset_right = -691.0
 offset_bottom = -406.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.627451, 0.137255, 0.203922, 1)
 theme_override_fonts/normal_font = ExtResource("2_h3bp2")
 theme_override_font_sizes/normal_font_size = 116
 text = "BUTCHER"
+
+[connection signal="mouse_entered" from="Button" to="Button" method="SetMouseIn"]
+[connection signal="mouse_exited" from="Button" to="Button" method="SetMouseOut"]
+[connection signal="mouse_entered" from="Button2" to="Button2" method="SetMouseIn"]
+[connection signal="mouse_exited" from="Button2" to="Button2" method="SetMouseOut"]
+[connection signal="mouse_entered" from="Button3" to="Button3" method="SetMouseIn"]
+[connection signal="mouse_exited" from="Button3" to="Button3" method="SetMouseOut"]
+[connection signal="mouse_entered" from="Button4" to="Button4" method="SetMouseIn"]
+[connection signal="mouse_exited" from="Button4" to="Button4" method="SetMouseOut"]
