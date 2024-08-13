@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://274lrbavo6ta"]
+
+[ext_resource type="Script" path="res://Scripts/Character.gd" id="1_jo0wq"]
+[ext_resource type="PackedScene" uid="uid://do5g3qp5w03o4" path="res://Prefabs/Drone.tscn" id="2_x73gg"]
+[ext_resource type="Script" path="res://Scripts/CharacterLights.gd" id="3_ooby8"]
+[ext_resource type="Script" path="res://Scripts/InteractableDetector.gd" id="4_j65tq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a7jqq"]
+radius = 1.343
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfcab"]
+size = Vector3(0.405, 0.296, 0.405)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_jo0wq")
+moveSpeed = 3.0
+
+[node name="Drone" parent="." node_paths=PackedStringArray("velTarget") instance=ExtResource("2_x73gg")]
+velTarget = NodePath("..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Drone"]
+transform = Transform3D(-0.777684, 1.50021e-08, -0.628655, -0.628655, 4.74621e-08, 0.777684, 4.15042e-08, 1, -2.74794e-08, -1.11442, 1.44626, 0)
+light_color = Color(0.901961, 0.717647, 0.619608, 1)
+light_energy = 0.5
+light_size = 0.99
+light_specular = 2.09
+spot_range = 5.876
+spot_angle = 43.78
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Drone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087337, 0)
+visible = false
+light_color = Color(0.952941, 0.835294, 0.756863, 1)
+light_energy = 0.1
+light_indirect_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_length = 1102.26
+omni_range = 4.9749
+
+[node name="Lights" type="Node3D" parent="." node_paths=PackedStringArray("light")]
+script = ExtResource("3_ooby8")
+light = NodePath("../Drone/SpotLight3D")
+minLight = 0.9
+maxLight = 1.029
+lightAdjustSpeed = 1.0
+
+[node name="InteractableDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_j65tq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.567268, 0)
+shape = SubResource("SphereShape3D_a7jqq")
+
+[node name="EnvironmentCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548666, 0)
+shape = SubResource("BoxShape3D_hfcab")
+
+[connection signal="body_entered" from="InteractableDetector" to="InteractableDetector" method="BodyEntered"]
+[connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="BodyLeave"]

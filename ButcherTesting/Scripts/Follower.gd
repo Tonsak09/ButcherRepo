@@ -12,12 +12,13 @@ enum FollowType {LOCKED, ALL, AXIS_X, AXIS_Z}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	offset = global_position - target.global_position
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pos = target.global_position + offset
-	
+	print_debug("Test")
 	match mode:
 		FollowType.ALL:
 			pos = global_position

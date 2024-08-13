@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var cam : Camera3D
+@export var cam : Node3D
 @export var moveSpeed : float 
 
 var canControl : bool 
